@@ -1,0 +1,98 @@
+{% extends BASE_TEMPLATE %}
+{% load app_filters %}
+{% block titleextra %}: {{ application.application.name }} {{ application.version }}{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}, {{ application.application.name }}, {{ application.application.name }} {{ application.version }}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>{{ application.application.name }} {{ application.version }}</h2>
+        {% if unsupported %}
+            <p class='unsupported'><strong>Unsupported: Use of this version of {{ application.application.name }} is not supported. <a href="{% url 'bear_applications:help' %}#policy">More information on our Applications Support and Retention Policy</a></strong>.</p>
+        {% elif deprecated %}
+            <p class='deprecated'><strong>Deprecated: Use of this version of {{ application.application.name }} is deprecated. <a href="{% url 'bear_applications:help' %}#policy">More information on our Applications Support and Retention Policy</a></strong>.</p>
+        {% endif %}
+        {% if application.application.currentversion and application.version != application.application.currentversion.version.version and sibling_version.version != application.application.currentversion.version.version %}
+            <p class='legacy_version'><strong><a href="{% url 'bear_applications:application_version' bavname=bav name=application.application.name version=application.application.currentversion.version.version %}">There is a newer version of {{ application.application.name }}</a></strong></p>
+        {% endif %}
+        {{ application.application.description }}
+        {% if application.module_load %}
+            <h3 id="accessing">Accessing {{ application.application.name }} {{ application.version }}</h3>
+            <p>To load the module for {{ application.application.name }} {{ application.version }} please use this command on {% website_settings_value "SYSTEM_NAME" %}{% website_settings_value "ALL_SYSTEM_NAMES_BRACKETS" %}:</p>
+            <p><code class="block">{% if needs_module %}module load {{ needs_module }}<br />{% endif %}module load {{ application.module_load }}</code></p>
+            {% if sibling_version_is %}
+                <p class='sibling_version'><a href="{% url 'bear_applications:application_version' bavname=bav name=application.application.name version=sibling_version.version %}">There is a {{ sibling_version_is }} version of this module: {{ application.application.name }} {{ sibling_version.version }}</a></p>
+            {% endif %}
+        {% endif %}
+        {% if bav != 'system' %}
+            <h3>{% website_settings_value "BAV_NAME" %}</h3>
+            <p><a href="{% url 'bear_applications:filter' bearappsversion=bav %}">{{ bav }}</a></p>
+        {% endif %}
+        {% if archs|length != 0 %}
+            <h3 id="architectures">Architectures</h3>
+            <p>
+                {% for t in archs %}
+                    <a href="{% url 'bear_applications:filter' bearappsversion=bav arch=t.architecture.displayed_name %}">{{ t.architecture.displayed_name }}</a>
+                    {% if cuda and t.architecture.gpu_set.all %}(GPUs: {% for gpu in t.architecture.gpu_set.all %}{{ gpu.name }}{% if not forloop.last %}, {% endif %}{% endfor %}){% endif %}
+                    {% if not t.bearappsversion.supported %} (unsupported){% endif %}
+                    {% if not forloop.last %}&mdash;{% endif %}
+                {% endfor %}
+            </p>
+            {% website_settings_value "ARCH_INFO" %}
+        {% endif %}
+        {% for data in application.application.paragraphdata_set.all %}
+            <h3 id="{{ data.header | to_a_name }}">{{ data.header }}</h3>
+            {{ data.content}}
+        {% endfor %}
+        {% for data in application.paragraphdata_set.all %}
+            <h3 id="{{ data.header | to_a_name }}">{{ data.header }}</h3>
+            {{ data.content}}
+        {% endfor %}
+        {% if application.application.more_info %}
+            <h3 id="moreinformation">More Information</h3>
+            <p>For more information visit the <a href="{{ application.application.more_info }}">{{ application.application.name }} website</a>.</p>
+        {% endif %}
+        {% if application.dependencies.all %}
+            <h3 id="dependencies">Dependencies</h3>
+            <p class="deps">This version of {{ application.application.name }} has a direct dependency on:
+                {% for dep in application.sorted_dependencies %}
+                    <a href="{% url 'bear_applications:application_version' bavname=bav name=dep.application.name version=dep.version %}">{{ dep.application.name }}/{{ dep.version }}</a>
+                {% endfor %}
+            </p>
+            {% if multideps %}
+                <p>This version of {{ application.application.name }} is compatible with multiple vesions of {{ multideps|join:", " }}. At any time, only one of the versions of {{ multideps|join:", " }} can be active and the desired version of {{ multideps|join:", " }} should be loaded before loading this version of {{ application.application.name }}.</p>
+            {% endif %}
+        {% endif %}
+        {% if application.requires.all %}
+            <h3 id="requiredby">Required By</h3>
+            <p class="deps">This version of {{ application.application.name }} is a direct dependent of:
+                {% for dep in application.sorted_requires %}
+                    <a href="{% url 'bear_applications:application_version' bavname=bav name=dep.application.name version=dep.version %}">{{ dep.application.name }}/{{ dep.version }}</a>
+                {% endfor %}
+            </p>
+        {% endif %}
+        {% if other_versions|length != 0 %}
+            <h3 id="otherversions">Other Versions</h3>
+            <p>These versions of <a href="{% url 'bear_applications:application' name=application.application.name %}">{{ application.application.name }}</a> are available on {% website_settings_value "SYSTEM_NAME" %}{% website_settings_value "ALL_SYSTEM_NAMES_BRACKETS" %}. These will be retained in accordance with our <a href="{% url 'bear_applications:help' %}#policy">Applications Support and Retention Policy</a>.</p>
+            <div id="applications">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>{% website_settings_value "BAV_NAME" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for version in other_versions %}
+                            <tr class="highlight-tr-hover" id='{{ version.bav }}-{{ application.application.name }}-{{ version.version }}'>
+                                <td><a href="{% url 'bear_applications:application_version' bavname=version.bav name=application.application.name version=version.version %}">{{ version.version }}</a></td>
+                                <td><a href="{% url 'bear_applications:filter' bearappsversion=version.bav %}">{{ version.bav }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+        <p class="right"><em>Last modified on {{ application.modified|date:"jS F Y" }}</em></p>
+    </div>
+{% endblock %}

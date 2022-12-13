@@ -1,0 +1,172 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#header {
+    background-color: #574b90;
+}
+
+#menu {
+    border-bottom: 2px solid #574b90;
+}
+
+#footer {
+    background-color: #574b90;
+}
+
+#menu a {
+    color: #574b90;
+}
+
+#content a:hover,
+#content a:focus,
+#content a:active,
+#menu a:hover,
+#menu a:focus,
+#menu a:active {
+    color: white;
+    background-color: #574b90;
+}
+
+#footer a:hover,
+#footer a:focus,
+#footer a:active {
+    color: #362e59;
+    background-color: white;
+}
+
+table {
+    border: 1px solid #574b90;
+}
+
+td {
+    border: 1px solid #574b90;
+}
+
+thead tr th:not(:first-child) {
+    border-left: 1px solid #e5d9f2;
+}
+
+th {
+    background-color: #574b90;
+    color: white;
+}
+
+thead > tr {
+    background-color: #574b90;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #e5d9f2;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+tr.highlight-tr-hover td:hover,
+tr.highlight-tr-hover td:focus,
+tr.highlight-tr-hover td:active {
+    background-color: #574b90;
+    color: white;
+}
+
+.legacy_version {
+    color: white;
+    background-color: #574b90;
+    border: 1px solid #362e59;
+}
+
+#content .legacy_version a:hover,
+#content .legacy_version a:focus,
+#content .legacy_version a:active {
+    color: #362e59;
+    background-color: white;
+}
+
+code {
+    background-color: #e5d9f2;
+    border: 1px solid #574b90;
+}
+
+#uob-logo img,
+#bear-logo img {
+    height: 3.2em;
+    max-width: 90%;
+}
+
+#search input,
+#search button,
+#advancedsearch input,
+#advancedsearch button {
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 1px solid #574b90;
+    color: #574b90;
+}
+
+#search input:hover,
+#search input:focus,
+#search input:active,
+#advancedsearch input:hover,
+#advancedsearch input:focus,
+#advancedsearch input:active {
+    background-color: #e5d9f2;
+    transition: 0.5s;
+}
+
+#search button:hover,
+#search button:focus,
+#search button:active,
+#advancedsearch button:hover,
+#advancedsearch button:focus,
+#advancedsearch button:active {
+    background: #574b90;
+}
+
+label {
+    color: #574b90;
+}
+
+hr {
+    color: #574b90;
+}
+
+@media only screen and (max-width: 779px) {
+    #uob-logo {
+        margin-top: 0.75em;
+    }
+}
+
+@media only screen and (min-width: 779px) {
+    #uob-logo {
+        width: calc(25% - 1em);
+        float: left;
+        text-align: left;
+        margin-top: 0.75em;
+        margin-left: 1em;
+    }
+
+    #bear-logo {
+        width: calc(25% - 1em);
+        float: right;
+        text-align: right;
+        margin-top: 0.75em;
+        margin-right: 1em;
+    }
+
+    #title {
+        width: 50%;
+        float: left;
+        text-align: center;
+    }
+}

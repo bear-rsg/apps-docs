@@ -1,0 +1,14 @@
+__pycache__/
+venv*/
+htmlcov/
+geckodriver.log
+src/apps-docs/static
+*.pyc
+local_settings.py
+mysql.conf
+.coverage*
+.hypothesis
+.vscode
+*.swp
+*.sqlite3*
+src/apps_docs_django.egg-info

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>BEAR Applications{% block titleextra %}{% endblock %} (for BlueBEAR, BEARCloud VMs, and CaStLeS VMs)</title>
+        <meta name="Description" content="Applications installed on BlueBEAR, BEARCloud VMs, and CaStLeS VMs. Provided by Advanced Research Computing for researchers at the University of Birmingham." />
+        <meta name="Keywords" content="BEAR, Birmingham Environment for Academic Research, University of Birmingham, Birmingham, BlueBEAR, BEARCloud, BEAR Cloud, CaStLeS, CaStLeS Cloud, hpc, high performance computing{% block keywordsextra %}{% endblock %}" />
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i%7CMontserrat:400,400i,700,700i%7CSource+Code+Pro:400" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'core/css/style-v2.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/bear.css' %}">
+        <link rel="alternate" type="application/rss+xml" title="Latest installed applications RSS Feed" href="{% url 'bear_applications:latest-applications-feed' %}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'core/bear/favicon/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'core/bear/favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'core/bear/favicon/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'core/bear/favicon/site.webmanifest' %}">
+        <link rel="mask-icon" href="{% static 'core/bear/favicon/safari-pinned-tab.svg' %}" color="#574b90">
+        <meta name="msapplication-TileColor" content="#603cba">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+    <body>
+        <div id="container">
+            <header id="header" role="banner">
+                <div id="uob-logo">
+                    <a href="https://www.birmingham.ac.uk/index.aspx"><img src="{% static 'core/bear/images/uob-logo.svg' %}" alt="University of Birmingham Logo" /></a>
+                </div>
+                <div id="title">
+                    <h1><a href="{% url 'bear_applications:home' %}">BEAR Applications</a></h1>
+                </div>
+                <div id="bear-logo">
+                    <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/index.aspx"><img src="{% static 'core/bear/images/bear-logo.svg' %}" alt="Birmingham Environment for Academic Research (BEAR) Logo" /></a>
+                </div>
+            </header>
+
+            <div id="menu">
+                <nav role="navigation">
+                    <a href="{% url 'bear_applications:home' %}">Home</a>
+                    <a href="{% url 'bear_applications:applications' %}">Browse</a>
+                    <a href="{% url 'bear_applications:filter_options' %}">Filter</a>
+                    <a href="{% url 'bear_applications:search' %}">Search</a>
+                    <a href="{% url 'bear_applications:help' %}">Help</a>
+                </nav>
+                <form action="{% url 'bear_applications:search' %}" method="get" id="search" role="search">
+                    <p>
+                        <input type="text" placeholder="Search ..." name="search" aria-labelledby="searchbutton" {% if searched.name %}value="{{ searched.name|escape }}"{% endif %} />
+                        <button type="submit" id="searchbutton">Search</button>
+                    </p>
+                </form>
+            </div>
+
+            <main id="content" role="main">
+                {% autoescape off %}
+                    {% block content %}{% endblock %}
+                {% endautoescape %}
+            </main>
+
+            <footer id="footer" role="contentinfo">
+                <p>Developed by the <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/rsg/research-software-group.aspx">Research Software Group</a> at <a href="http://www.bham.ac.uk">The University of Birmingham</a></p>
+                <p>
+                    <a href='https://www.birmingham.ac.uk/privacy/index.aspx' target='_blank'>Privacy</a> |
+                    <a href='https://www.birmingham.ac.uk/legal/index.aspx' target='_blank'>Legal</a> |
+                    <a href='https://www.birmingham.ac.uk/university/governance/policies-regs/information/index.aspx' target='_blank'>Freedom of Information</a> |
+                    <a href='{% url 'bear_applications:cookies' %}'>Cookies</a> |
+                    <a href='https://accessibility.bear.bham.ac.uk/statements-bear.html' target='_blank'>Accessibility</a>
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

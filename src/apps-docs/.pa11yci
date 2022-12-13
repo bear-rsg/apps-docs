@@ -1,0 +1,8 @@
+{
+    "defaults": {
+        "runners": ["htmlcs"],
+        "chromeLaunchConfig": {
+            "args": ["--no-sandbox"]
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{% extends BASE_TEMPLATE %}
+{% load app_filters %}
+{% block titleextra %}: Available Filters{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Available Filters</h2>
+        <h3>{% website_settings_value "BAVS_NAME" %}</h3>
+        <p>{% website_settings_value "BAV_INFO" %}</p>
+        <ul>
+            {% for bav in bearappversions %}
+                <li><a href="{% url 'bear_applications:filter' bearappsversion=bav.bav %}">{{ bav.bav }}</a>{% if not bav.supported %} (<em><a href="{% url 'bear_applications:help' %}#policy">unsupported</a>)</em>{% elif bav.deprecated %} <em>(<a href="{% url 'bear_applications:help' %}#policy">deprecated</a>)</em>{% endif %}</li>
+            {% endfor %}
+        </ul>
+        {% if architectures %}
+            <h3>Architectures</h3>
+            <ul>
+                {% for arch in architectures %}
+                    <li><a href="{% url 'bear_applications:filter' bearappsversion='all' arch=arch.arch %}">{{ arch.arch }}</a></li>
+                {% endfor %}
+            </ul>
+            {% website_settings_value "ARCH_INFO" %}
+            <h3>{% website_settings_value "BAVS_NAME" %} and Architecture Combinations</h3>
+            <ul>
+                {% for combo in combos %}
+                    <li><a href="{% url 'bear_applications:filter' bearappsversion=combo.bav arch=combo.arch %}">{{ combo.bav }}: {{ combo.arch }}</a>{% if not combo.supported %} (<em><a href="{% url 'bear_applications:help' %}#policy">unsupported</a>)</em>{% elif combo.deprecated %} <em>(<a href="{% url 'bear_applications:help' %}#policy">deprecated</a>)</em>{% endif %}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}
+

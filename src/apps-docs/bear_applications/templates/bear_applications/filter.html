@@ -1,0 +1,55 @@
+{% extends BASE_TEMPLATE %}
+{% load app_filters %}
+{% block titleextra %}:{% if bearappsversion != 'all' %} {{ bearappsversion }}{% endif %}{% if arch %} {{ arch }}{% endif %}{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}{% if bearappsversion != 'all' %}, {{ bearappsversion }}{% endif %}{% if arch %}, {{ arch }}{% endif %}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Installed Applications: {% if bearappsversion != 'all' %}{{ bearappsversion }}{% endif %}{% if bearappsversion != 'all' and arch %} and {% endif %}{% if arch %}{{ arch }}{% endif %}</h2>
+        {% if not supported %}
+            <p class='unsupported'><strong>Unsupported: Use of the applications listed below is not supported. <a href="{% url 'bear_applications:help' %}#policy">More information on our Applications Support and Retention Policy</a></strong>.</p>
+        {% elif deprecated %}
+            <p class='deprecated'><strong>Use of the applications listed below is deprecated. <a href="{% url 'bear_applications:help' %}#policy">More information on our Applications Support and Retention Policy</a></strong>.</p>
+        {% endif %}
+        <p>Applications available on {% website_settings_value "SYSTEM_NAME" %}{% website_settings_value "ALL_SYSTEM_NAMES_BRACKETS" %}.
+            {% if bearappsversion != 'all' and arch %}All <a href="{% url 'bear_applications:filter' bearappsversion=bearappsversion %}">{{ bearappsversion }}</a> or <a href="{% url 'bear_applications:filter' bearappsversion='all' arch=arch %}">{{ arch }}</a> applications.{% endif %} In any one job, or session, you should use applications from only one {% website_settings_value "BAV_NAME" %}.
+        </p>
+        {% if gpus %}
+            <p>
+                Some of the nodes of this architecture have GPUs. The applications that run on the GPU nodes will usually have <em>CUDA</em> or <em>fosscuda</em> as part of the version.
+                Please see the <a href="{% website_settings_value "GPU_PAGE_URL" %}">GPU information page</a> for details about the available GPUs and targetting jobs to specific GPU types.
+                The available GPU types are:
+            </p>
+            <ul>
+                {% for gpu in gpus %}<li>{{ gpu.name }}</li>{% endfor %}
+            </ul>
+        {% endif %}
+        <div id="applications">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Application</th>
+                        <th>Version</th>
+                        {% if bearappsversion == 'all' %}<th>{% website_settings_value "BAV_NAME" %}</th>{% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in applications %}
+                        <tr class="highlight-tr-hover" id='{{ application.bav }}-{{ application.name }}-{{ application.ver }}'>
+                            <td><a href="{% url 'bear_applications:application' name=application.name %}">{{ application.name|dot_wbr }}</a></td>
+                            <td>
+                                <a href="{% url 'bear_applications:application_version' bavname=application.bav name=application.name version=application.ver %}">{{ application.ver }}</a>
+                            </td>
+                            {% if bearappsversion == 'all' %}
+                                <td><a href="{% url 'bear_applications:filter' bearappsversion=application.bav %}">{{ application.bav }}</a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

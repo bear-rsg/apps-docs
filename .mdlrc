@@ -1,0 +1,4 @@
+all
+exclude_rule 'MD012' # multiple blank lines
+exclude_rule 'MD013' # line length
+exclude_rule 'MD033' # inline HTML

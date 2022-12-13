@@ -1,0 +1,57 @@
+{% extends BASE_TEMPLATE %}
+{% load app_filters %}
+{% block titleextra %}: Search{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Search Applications</h2>
+        <p>Search for applications available on {% website_settings_value "SYSTEM_NAME" %}{% website_settings_value "ALL_SYSTEM_NAMES_BRACKETS" %}.</p>
+        {% if appversions|length > 0 %}
+            <div id="applications">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Application</th>
+                            <th>Version</th>
+                            <th>{% website_settings_value "BAV_NAME" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appversion in appversions %}
+                            <tr class="highlight-tr-hover" id='{{ appversion.name }}-{{ appversion.ver }}'>
+                                <td><a href="{% url 'bear_applications:application' name=appversion.name %}">{{ appversion.name|dot_wbr }}</a></td>
+                                <td><a href="{% url 'bear_applications:application_version' bavname=appversion.bav name=appversion.name version=appversion.ver %}">{{ appversion.ver }}</a></td>
+                                <td>
+                                    <a href="{% url 'bear_applications:filter' bearappsversion=appversion.bav %}">{{ appversion.bav }}
+                                        {% if not appversion.supported %}
+                                            <em>(unsupported)</em>
+                                        {% elif appversion.deprecated %}
+                                            <em>(deprecated)</em>
+                                        {% endif %}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% elif searched %}
+            <p class='no_results'>No results found!</p>
+        {% endif %}
+        <h3>Advanced Search</h3>
+        <form action="{% url 'bear_applications:search' %}" method="get" id="advancedsearch">
+            <p><label for="name">Application name</label><br /><input type="text" placeholder="Application name ..." name="name" id="name" {% if searched.name %}value="{{ searched.name|escape }}"{% endif %} /></p>
+            <p><label for="version">Version</label><br /><input type="text" placeholder="Version ..." name="version" id="version" {% if searched.version %}value="{{ searched.version|escape }}"{% endif %} /></p>
+            <p><label for="module">Module load</label><br /><input type="text" placeholder="Module ..." name="module" id="module" {% if searched.module %}value="{{ searched.module|escape }}"{% endif %} /></p>
+            <p><label for="other">Other text</label><br /><input type="text" placeholder="Other text ..." name="other" id="other" {% if searched.other %}value="{{ searched.other|escape }}"{% endif %} /></p>
+            <p>Match:<br /><input type="radio" id="and" name="and_or" value="and" {% if searched.and_or %}checked{% endif %}> <label for="and">all fields</label><br /><input type="radio" id="or" name="and_or" value="or" {% if not searched.and_or %}checked{% endif %}> <label for="or">any field</label></p>
+            <p>Match:<br /><input type="radio" id="partial" name="partial_exact" value="partial" {% if searched.partial_exact %}checked{% endif %}> <label for="partial">partial</label><br /><input type="radio" id="exact" name="partial_exact" value="exact" {% if not searched.partial_exact %}checked{% endif %}> <label for="exact">exact</label></p>
+            {% if search_deprec %}
+                <p>Search for applications in deprecated or unsupported {% website_settings_value "BAVS_NAME" %}:<br /><input type="radio" id="no" name="deprecated" value="no" {% if searched.deprecated %}checked{% endif %}> <label for="no">no</label><br /><input type="radio" id="yes" name="deprecated" value="yes" {% if not searched.deprecated %}checked{% endif %}> <label for="yes">yes</label></p>
+            {% endif %}
+            <p><button type="submit">Search</button></p>
+        </form>
+    </div>
+{% endblock %}

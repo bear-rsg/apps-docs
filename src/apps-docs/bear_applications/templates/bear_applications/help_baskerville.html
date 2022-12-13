@@ -1,0 +1,18 @@
+{% extends BASE_TEMPLATE %}
+{% block titleextra %}: Help Information{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}, help{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Help</h2>
+        <p>This website details the applications installed on <a href="https://www.baskerville.ac.uk/">Baskerville</a>. Information about Baskerville is available on the <a href="https://docs.baskerville.ac.uk/">Baskerville Docs</a> website.</p>
+        
+        <h3 id="policy">Applications Support and Retention Policy</h3>
+        <p>There are <a href="https://docs.baskerville.ac.uk/apps/">two application environments on Baskerville</a>.</p>
+        <ul>
+            <li><strong>Live</strong>: There will be warning given to existing users of applications in this environemnt before removal or changes.</li>
+            <li><strong>Test</strong>: Changes and removals in this environment may occur withour warning.</li>
+        </ul>
+    </div>
+{% endblock %}

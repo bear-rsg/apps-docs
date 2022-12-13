@@ -1,0 +1,59 @@
+{% load static %}
+{% load app_filters %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Baskerville Applications{% block titleextra %}{% endblock %}</title>
+        <meta name="Description" content="Applications installed on Baskerville. Provided by Advanced Research Computing for researchers at the University of Birmingham." />
+        <meta name="Keywords" content="Baskerville, University of Birmingham, Birmingham, hpc, high performance computing{% block keywordsextra %}{% endblock %}" />
+
+        <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700,700i%7CRaleway:400,400i,700,700i%7CSource+Code+Pro:400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'core/css/style-v2.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/baskerville.css' %}">
+        <link rel="alternate" type="application/rss+xml" title="Baskerville Applications Latest installed applications RSS Feed" href="{% url 'bear_applications:latest-applications-feed' %}" />
+        <link rel="shortcut icon" href="{% static 'core/baskerville/favicon.png' %}">
+    </head>
+    <body>
+        <div id="container">
+            <header id="header" role="banner">
+                <img src="{% static 'core/baskerville/logo-dark.svg' %}" alt="Baskerville" />
+                <h1><a href="/">Baskerville Applications</a></h1>
+            </header>
+
+            <div id="menu">
+                <nav role="navigation">
+                    <a href="{% url 'bear_applications:home' %}">Home</a>
+                    <a href="{% url 'bear_applications:applications' %}">Browse</a>
+                    <a href="{% url 'bear_applications:filter_options' %}">Filter</a>
+                    <a href="{% url 'bear_applications:search' %}">Search</a>
+                    <a href="{% url 'bear_applications:help' %}">Help</a>
+                </nav>
+                <form action="{% url 'bear_applications:search' %}" method="get" id="search" role="search">
+                    <p>
+                        <input type="text" placeholder="Search ..." name="search" aria-labelledby="searchbutton" {% if searched.name %}value="{{ searched.name }}"{% endif %} />
+                        <button type="submit" id="searchbutton">Search</button>
+                    </p>
+                </form>
+            </div>
+
+            <main id="content" role="main">
+                {% autoescape off %}
+                    {% block content %}{% endblock %}
+                {% endautoescape %}
+            </main>
+
+            <footer id="footer" role="contentinfo">
+                <p><a href="https://www.baskerville.ac.uk/">Baskerville Tier 2 HPC</a> - Funded by EPSRC Grant EP/T022221/1, University of Birmingham</p>
+                <p>
+                    <a href='https://www.baskerville.ac.uk/privacy-policy/' target="_blank">Privacy, Legal, and Freedom of Information</a> |
+                    <a href='{% url 'bear_applications:cookies' %}'>Cookies</a> |
+                    <a href='https://www.baskerville.ac.uk/accessibility/' target="_blank">Accessibility</a>
+                </p>
+                <p>Website developed by the <a href="https://www.birmingham.ac.uk/bear-software">Research Software Group</a> at the <a href="http://www.bham.ac.uk">University of Birmingham</a></p>
+            </footer>
+        </div>
+    </body>
+</html>

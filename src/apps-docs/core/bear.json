@@ -1,0 +1,18 @@
+{
+    "ALL_SYSTEM_NAMES": "BlueBEAR, BEARCloud VMs, and CaStLeS VMs",
+    "ALL_SYSTEM_NAMES_BRACKETS": " (BlueBEAR, BEARCloud VMs, and CaStLeS VMs)",
+    "SYSTEM_NAME": "the BEAR systems",
+    "BAVS_NAME": "BEAR Application Versions",
+    "BAV_NAME": "BEAR Apps Version",
+    "MODULE_BASE": "bear-apps",
+    "BAV_INFO": "Every six months we start a new BEAR Application Version, which is a default set of tools and libraries that are used as the basis for all the applications we install on the BEAR systems (BlueBEAR, BEARCloud VMs, and CaStLeS VMs). In any one job, or session, you should use applications from only one BEAR Application Version.",
+    "BAV_ORDER": "desc",
+    "WEBSITE_NAME": "BEAR Applications",
+    "DISPLAY_SEARCH_DEPREC": true,
+    "DISPLAY_ARCH": true,
+    "BASE_TEMPLATE": "base_bear.html",
+    "HELP_PAGE": "help_bear.html",
+    "HOME_PAGE": "home_bear.html",
+    "GPU_PAGE_URL": "https://intranet.birmingham.ac.uk/bluebear/gpu",
+    "ARCH_INFO": "<p>The listed architectures consist of two part: <em>OS-CPU</em>.<p>\n<ul>\n<li>BlueBEAR: The OS used on BlueBEAR is represented by <em>EL</em> and there are several different processor (CPU) types available on BlueBEAR. More information about the processor types on BlueBEAR is available on the <a href=\"https://intranet.birmingham.ac.uk/bear/bluebear/job-submission#cpus\">BlueBEAR Job Submission page</a>.</li>\n<li>BEAR and CaStLeS Cloud VMs: These VMs can have one of two OSes. Those with access to a BEAR Cloud or CaStLeS VM should check that the listed architectures for an application include the OS of VM being used. The VMs, irrespective of OS, will use the <em>haswell</em> CPU type.</li>\n</ul>"
+}

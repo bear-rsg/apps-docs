@@ -1,0 +1,33 @@
+{% extends BASE_TEMPLATE %}
+{% load app_filters %}
+{% block titleextra %}{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Installed Applications</h2>
+        <p>Applications available on {% website_settings_value "SYSTEM_NAME" %}{% website_settings_value "ALL_SYSTEM_NAMES_BRACKETS" %}.</p>
+        <div id="applications">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Application</th>
+                        <th>Current Version</th>
+                        <th>{% website_settings_value "BAV_NAME" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in applications %}
+                        <tr class="highlight-tr-hover" id='{{ application.bav }}-{{ application.name }}-{{ application.ver }}'>
+                            <td><a href="{% url 'bear_applications:application' name=application.name %}">{{ application.name|dot_wbr }}</a></td>
+                            <td><a href="{% url 'bear_applications:application_version' bavname=application.bav name=application.name version=application.ver %}">{{ application.ver }}</a></td>
+                            <td><a href="{% url 'bear_applications:filter' bearappsversion=application.bav %}">{{ application.bav }}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

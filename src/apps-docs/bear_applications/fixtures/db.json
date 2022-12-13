@@ -1,0 +1,579 @@
+[
+    {
+        "model": "bear_applications.application",
+        "pk": 1,
+        "fields": {
+            "name": "MATLAB",
+            "description": "blah",
+            "more_info": "https://test.com"
+        }
+    },
+    {
+        "model": "bear_applications.application",
+        "pk": 2,
+        "fields": {
+            "name": "Python",
+            "description": "blah",
+            "more_info": "https://test.co.uk",
+            "reason_to_hide": "archived"
+        }
+    },
+    {
+        "model": "bear_applications.application",
+        "pk": 3,
+        "fields": {
+            "name": "TensorFlow",
+            "description": "An open-source software library for Machine Intelligence",
+            "more_info": "https://www.tensorflow.org/"
+        }
+    },
+    {
+        "model": "bear_applications.application",
+        "pk": 4,
+        "fields": {
+            "name": "PyTorch",
+            "description": "Machine learning",
+            "more_info": "https://www.pytorch.org/"
+        }
+    },
+    {
+        "model": "bear_applications.application",
+        "pk": 5,
+        "fields": {
+            "name": "Singularity",
+            "description": "Containerisation",
+            "more_info": "https://www.singularity.org/"
+        }
+    },
+    {
+        "model": "bear_applications.application",
+        "pk": 6,
+        "fields": {
+            "name": "matlab_toolbox",
+            "description": "A toolbox for MATLAB"
+        }
+    },
+    {
+        "model": "bear_applications.application",
+        "pk": 7,
+        "fields": {
+            "name": "OpenFOAM",
+            "description": "OpenFOAM Information"
+        }
+    },
+    {
+        "model": "bear_applications.application",
+        "pk": 9,
+        "fields": {
+            "name": "OpenFOAM Real",
+            "description": "An OpenFOAM Variant"
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 2,
+        "fields": {
+            "application": 1,
+            "version": "R2018b",
+            "module_load": "MATLAB/R2018b",
+            "created": "2019-06-01T18:29:10Z",
+            "modified": "2019-10-01T18:23:21Z",
+            "app_sort_order": -1
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 3,
+        "fields": {
+            "application": 1,
+            "version": "2017b",
+            "module_load": "apps/matlab/2017b",
+            "created": "2018-02-03T11:23:45Z",
+            "modified": "2019-02-02T14:43:21Z"
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 4,
+        "fields": {
+            "application": 1,
+            "version": "2017a",
+            "module_load": "apps/matlab/2017a",
+            "created": "2017-06-03T11:23:45Z",
+            "modified": "2018-02-02T14:43:21Z",
+            "app_sort_order": 3
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 5,
+        "fields": {
+            "application": 1,
+            "version": "2014a",
+            "module_load": "apps/matlab/2014a",
+            "created": "2012-06-03T11:23:45Z",
+            "modified": "2018-02-02T14:43:21Z",
+            "reason_to_hide": "archived"
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 6,
+        "fields": {
+            "application": 2,
+            "version": "2.7.12-foss-2012a",
+            "module_load": "apps/python/2.7.12-foss-2012a",
+            "created": "2014-06-03T11:23:45Z",
+            "modified": "2018-02-02T14:43:21Z",
+            "dependencies": [7]
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 7,
+        "fields": {
+            "application": 3,
+            "version": "1.13.1-fosscuda-2018b-Python-3.6.6",
+            "module_load": "TensorFlow/1.13.1-fosscuda-2018b-Python-3.6.6",
+            "created": "2019-06-05T14:25:49.761Z",
+            "modified": "2019-06-05T14:25:49.761Z",
+            "app_sort_order": -10
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 8,
+        "fields": {
+            "application": 4,
+            "version": "1.2.0-fosscuda-2019a-Python-3.7.2",
+            "module_load": "PyTorch/1.2.0-fosscuda-2019a-Python-3.7.2",
+            "created": "2019-08-05T14:25:49.761Z",
+            "modified": "2019-09-05T14:25:49.761Z",
+            "reason_to_hide": "archived"
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 9,
+        "fields": {
+            "application": 3,
+            "version": "1.13.1-foss-2018b-Python-3.6.6",
+            "module_load": "TensorFlow/1.13.1-foss-2018b-Python-3.6.6",
+            "created": "2019-05-05T14:25:49.761Z",
+            "modified": "2019-05-05T14:25:49.761Z",
+            "app_sort_order": -2,
+            "dependencies": [7, 8]
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 10,
+        "fields": {
+            "application": 3,
+            "version": "1.10.1-fosscuda-2018b-Python-3.6.6",
+            "module_load": "TensorFlow/1.10.1-fosscuda-2018b-Python-3.6.6",
+            "created": "2018-07-05T14:25:49.761Z",
+            "modified": "2018-07-05T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 11,
+        "fields": {
+            "application": 3,
+            "version": "1.10.1-foss-2018b-Python-3.6.6",
+            "module_load": "TensorFlow/1.10.1-foss-2018b-Python-3.6.6",
+            "created": "2018-06-05T14:25:49.761Z",
+            "modified": "2018-06-05T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 12,
+        "fields": {
+            "application": 5,
+            "version": "Information Page",
+            "module_load": "",
+            "created": "2019-06-05T14:25:49.761Z",
+            "modified": "2019-08-05T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 13,
+        "fields": {
+            "application": 3,
+            "version": "1.10.1-foss-2017a-Python-3.6.6",
+            "module_load": "module load TensorFlow/1.10.1-foss-2017a-Python-3.6.6",
+            "created": "2020-01-05T14:25:49.761Z",
+            "modified": "2020-01-05T14:25:49.761Z",
+            "app_sort_order": 3
+        }
+    },
+    {
+        "model": "bear_applications.version",
+        "pk": 14,
+        "fields": {
+            "application": 6,
+            "version": "1.0",
+            "module_load": "module load matlab_toolbox/1.0",
+            "created": "2020-04-05T14:25:49.761Z",
+            "modified": "2020-04-05T14:25:49.761Z",
+            "dependencies": [3, 4]
+        }
+    },
+    {
+        "model": "bear_applications.currentversion",
+        "pk": 1,
+        "fields": {
+            "application": 1,
+            "version": 2
+        }
+    },
+    {
+        "model": "bear_applications.currentversion",
+        "pk": 2,
+        "fields": {
+            "application": 2,
+            "version": 6
+        }
+    },
+    {
+        "model": "bear_applications.currentversion",
+        "pk": 3,
+        "fields": {
+            "application": 3,
+            "version": 7
+        }
+    },
+    {
+        "model": "bear_applications.currentversion",
+        "pk": 4,
+        "fields": {
+            "application": 4,
+            "version": 8
+        }
+    },
+    {
+        "model": "bear_applications.paragraphdata",
+        "pk": 1,
+        "fields": {
+            "version": 2,
+            "application": null,
+            "header": "a title",
+            "content": "some text",
+            "created": "2019-01-01T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.paragraphdata",
+        "pk": 2,
+        "fields": {
+            "version": 2,
+            "application": null,
+            "header": "some title",
+            "content": "here is some text",
+            "created": "2019-01-01T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.paragraphdata",
+        "pk": 3,
+        "fields": {
+            "version": null,
+            "application": 1,
+            "header": "second paragraph",
+            "content": "here is some text",
+            "created": "2019-01-03T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.paragraphdata",
+        "pk": 4,
+        "fields": {
+            "version": null,
+            "application": 1,
+            "header": "first paragraph",
+            "content": "here is some text",
+            "created": "2019-01-02T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.paragraphdata",
+        "pk": 5,
+        "fields": {
+            "version": null,
+            "application": 5,
+            "header": "unusual information",
+            "content": "here is the information",
+            "created": "2019-01-03T14:25:49.761Z"
+        }
+    },
+    {
+        "model": "bear_applications.architecture",
+        "pk": 1,
+        "fields": {
+            "name": "EL7-haswell",
+            "displayed_name": "EL7-haswell",
+            "hidden": false
+        }
+    },
+    {
+        "model": "bear_applications.architecture",
+        "pk": 2,
+        "fields": {
+            "name": "EL7-p9",
+            "displayed_name": "EL7-power9",
+            "hidden": false
+        }
+    },
+    {
+        "model": "bear_applications.architecture",
+        "pk": 3,
+        "fields": {
+            "name": "BB-Hidden-Arch",
+            "displayed_name": "Hidden",
+            "hidden": true
+        }
+    },
+    {
+        "model": "bear_applications.architecture",
+        "pk": 4,
+        "fields": {
+            "name": "system",
+            "displayed_name": "system",
+            "hidden": false
+        }
+    },
+    {
+        "model": "bear_applications.bearappsversion",
+        "pk": 1,
+        "fields": {
+            "name": "2018b-1",
+            "displayed_name": "2018b",
+            "auto_loaded": false,
+            "hidden": false,
+            "deprecated": false,
+            "supported": true
+        }
+    },
+    {
+        "model": "bear_applications.bearappsversion",
+        "pk": 2,
+        "fields": {
+            "name": "2019a",
+            "displayed_name": "2019a",
+            "auto_loaded": true,
+            "hidden": false,
+            "deprecated": false,
+            "supported": true
+        }
+    },
+    {
+        "model": "bear_applications.bearappsversion",
+        "pk": 3,
+        "fields": {
+            "name": "2017a",
+            "displayed_name": "2017a",
+            "auto_loaded": false,
+            "hidden": false,
+            "deprecated": true,
+            "supported": false
+        }
+    },
+    {
+        "model": "bear_applications.bearappsversion",
+        "pk": 4,
+        "fields": {
+            "name": "2019b",
+            "displayed_name": "2019b",
+            "auto_loaded": true,
+            "hidden": false,
+            "deprecated": false,
+            "supported": true
+        }
+    },
+    {
+        "model": "bear_applications.bearappsversion",
+        "pk": 5,
+        "fields": {
+            "name": "2019h",
+            "displayed_name": "2019h",
+            "auto_loaded": true,
+            "hidden": false,
+            "deprecated": true,
+            "supported": true
+        }
+    },
+    {
+        "model": "bear_applications.bearappsversion",
+        "pk": 6,
+        "fields": {
+            "name": "system",
+            "displayed_name": "system",
+            "auto_loaded": true,
+            "hidden": false,
+            "deprecated": false,
+            "supported": true
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 1,
+        "fields": {
+            "version": 2,
+            "bearappsversion": 1,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 2,
+        "fields": {
+            "version": 3,
+            "bearappsversion": 2,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 3,
+        "fields": {
+            "version": 4,
+            "bearappsversion": 1,
+            "architecture": 2
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 4,
+        "fields": {
+            "version": 5,
+            "bearappsversion": 1,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 5,
+        "fields": {
+            "version": 6,
+            "bearappsversion": 2,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 6,
+        "fields": {
+            "version": 7,
+            "bearappsversion": 2,
+            "architecture": 2
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 7,
+        "fields": {
+            "version": 12,
+            "bearappsversion": 6,
+            "architecture": 4
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 8,
+        "fields": {
+            "version": 13,
+            "bearappsversion": 3,
+            "architecture": 2
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 9,
+        "fields": {
+            "version": 13,
+            "bearappsversion": 3,
+            "architecture": 3
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 10,
+        "fields": {
+            "version": 13,
+            "bearappsversion": 4,
+            "architecture": 3
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 11,
+        "fields": {
+            "version": 7,
+            "bearappsversion": 5,
+            "architecture": 3
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 12,
+        "fields": {
+            "version": 14,
+            "bearappsversion": 2,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 13,
+        "fields": {
+            "version": 9,
+            "bearappsversion": 1,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 14,
+        "fields": {
+            "version": 10,
+            "bearappsversion": 1,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.link",
+        "pk": 15,
+        "fields": {
+            "version": 11,
+            "bearappsversion": 1,
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.gpu",
+        "pk": 1,
+        "fields": {
+            "name": "NVIDIA P100",
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.gpu",
+        "pk": 2,
+        "fields": {
+            "name": "NVIDIA K30",
+            "architecture": 1
+        }
+    },
+    {
+        "model": "bear_applications.gpu",
+        "pk": 3,
+        "fields": {
+            "name": "NVIDIA V100",
+            "architecture": 2
+        }
+    }
+]

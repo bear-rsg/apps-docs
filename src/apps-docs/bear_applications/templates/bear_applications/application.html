@@ -1,0 +1,42 @@
+{% extends BASE_TEMPLATE %}
+{% load app_filters %}
+{% block titleextra %}: {{ application.name }}{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}, {{ application.name }}{% if versions|length != 0 %}{% for version in versions %}, {{ version.version }}, {{ application.name }} {{ version.version }}{% endfor %}{% endif %}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>{{ application.name }}</h2>
+        {{ application.description }}
+        {% for data in application.paragraphdata_set.all %}
+            <h3 id="{{ data.header | to_a_name }}">{{ data.header }}</h3>
+            {{ data.content}}
+        {% endfor %}
+        {% if application.more_info %}
+            <h3 id="moreinformation">More Information</h3>
+            <p>For more information visit the <a href="{{ application.more_info }}">{{ application.name }} website</a>.</p>
+        {% endif %}
+        {% if versions|length != 0 %}
+            <h3 id="availableversions">Available Versions</h3>
+            <p>These versions of {{ application.name }} are available on {% website_settings_value "SYSTEM_NAME" %}{% website_settings_value "ALL_SYSTEM_NAMES_BRACKETS" %}. These will be retained in accordance with our <a href="{% url 'bear_applications:help' %}#policy">Applications Support and Retention Policy</a>.</p>
+            <div id="applications">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>{% website_settings_value "BAV_NAME" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for version in versions %}
+                            <tr class="highlight-tr-hover" id='{{ version.bav }}-{{ application.name }}-{{ version.version }}'>
+                                <td><a href="{% url 'bear_applications:application_version' bavname=version.bav name=application.name version=version.version %}">{{ version.version }}</a></td>
+                                <td><a href="{% url 'bear_applications:filter' bearappsversion=version.bav %}">{{ version.bav }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

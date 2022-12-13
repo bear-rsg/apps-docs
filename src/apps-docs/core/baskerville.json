@@ -1,0 +1,18 @@
+{
+    "ALL_SYSTEM_NAMES": "",
+    "ALL_SYSTEM_NAMES_BRACKETS": "",
+    "SYSTEM_NAME": "Baskerville",
+    "BAVS_NAME": "Baskerville Application Environments",
+    "BAV_NAME": "Bask Apps Env",
+    "MODULE_BASE": "bask-apps",
+    "BAV_INFO": "There are two Baskerville Application Environments: live and test. In any one job, or session, you should use applications from only one Baskerville Application Environment.",
+    "BAV_ORDER": "asc",
+    "WEBSITE_NAME": "Baskerville Applications",
+    "DISPLAY_SEARCH_DEPREC": false,
+    "DISPLAY_ARCH": false,
+    "BASE_TEMPLATE": "base_baskerville.html",
+    "HELP_PAGE": "help_baskerville.html",
+    "HOME_PAGE": "home_baskerville.html",
+    "GPU_PAGE_URL": "",
+    "ARCH_INFO": ""
+}

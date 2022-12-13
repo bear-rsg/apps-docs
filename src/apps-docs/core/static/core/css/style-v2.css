@@ -1,0 +1,289 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-size: 1.1em;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: black;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+a:hover,
+a:focus,
+a:active {
+    transition: 0.5s;
+    border-radius: 0.3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.1em;
+    letter-spacing: 0.02em;
+}
+
+#container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
+    width: 100%;
+    padding: 0.5em 0;
+    word-spacing: .08em;
+    text-align: center;
+}
+
+#menu {
+    font-size: 1.3em;
+}
+
+#menu form {
+    font-size: 0.95em;
+}
+
+#content {
+    flex: 1 0 auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    line-height: 1.7em;
+}
+
+#page h2:first-of-type {
+    margin-top: 1.2em;
+}
+
+#footer {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 0.5em 0;
+    word-spacing: .08em;
+    text-align: center;
+}
+
+.deps a {
+    margin: 0 0.35rem 0 0;
+}
+
+.notice {
+    border: 2px solid green;
+    font-weight: bold;
+}
+
+#header a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+#menu a {
+    padding: 0 0.3em;
+}
+
+#footer p,
+#footer a {
+    color: white;
+}
+
+#footer p {
+    margin: 0.5em;
+    font-size: 0.9em;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 1em auto;
+}
+
+th {
+    font-size: 1.2em;
+    padding: 0.2em 0.5em;
+}
+
+table tr > td,
+#applications table tr > td > a {
+    padding: 0.2em 0.5em;
+}
+
+tr.highlight-tr-hover td:hover,
+tr.highlight-tr-hover td:focus,
+tr.highlight-tr-hover td:active {
+    transition: 0.5s;
+}
+
+#applications table tr > td {
+    padding: 0;
+}
+
+#applications table tr > td > a {
+    display: block;
+    cursor: pointer;
+}
+
+.overflow,
+#applications {
+    overflow-x: auto;
+}
+
+.unsupported,
+.deprecated,
+.legacy_version,
+.sibling_version {
+    display: block;
+    padding: 0.6em;
+    letter-spacing: 0.03em;
+    border-radius: 0.2em;
+}
+
+.sibling_version {
+    background-color: #fff3b0;
+    border: 1px solid #db9d47;
+}
+
+.unsupported,
+.deprecated {
+    color: white;
+    background-color: #5e0b15;
+    border: 1px solid #360a14;
+}
+
+#content .sibling_version a:hover,
+#content .sibling_version a:focus,
+#content .sibling_version a:active {
+    background-color: #db9d47;
+}
+
+#content .unsupported a:hover,
+#content .unsupported a:focus,
+#content .unsupported a:active,
+#content .deprecated a:hover,
+#content .deprecated a:focus,
+#content .deprecated a:active {
+    color: #360a14;
+    background-color: white;
+}
+
+code {
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 0.2em;
+    padding: 0 0.3em;
+    margin: 0 0.1em;
+}
+
+code.block {
+    display: block;
+    padding: 0.5em;
+    margin: 0;
+}
+
+#search input,
+#search button,
+#advancedsearch input,
+#advancedsearch button {
+    border-radius: 0.3rem;
+    background-color: white;
+    padding: 0.15em 0.3em;
+    font-size: 1em;
+    max-width: 90%;
+}
+
+#search input:hover,
+#search input:focus,
+#search input:active,
+#advancedsearch input:hover,
+#advancedsearch input:focus,
+#advancedsearch input:active {
+    background-color: #e5d9f2;
+    transition: 0.5s;
+}
+
+#search button:hover,
+#search button:focus,
+#search button:active,
+#advancedsearch button:hover,
+#advancedsearch button:focus,
+#advancedsearch button:active {
+    color: white;
+    transition: 0.5s;
+}
+
+label {
+    letter-spacing: 0.02em;
+    font-weight: bold;
+}
+
+#rss-feed-icon {
+    height: 0.75em;
+}
+
+.right {
+    text-align: right;
+}
+
+@media only screen and (max-width: 499px) {
+    #header h1 {
+        margin-top: 0.2em;
+        word-wrap: break-word;
+    }
+
+    #content {
+        margin-left: 3%;
+        margin-right: 3%;
+        word-wrap: break-word;
+    }
+
+    #applications table tr > td > a {
+        padding: 0.3em;
+    }
+}
+
+@media only screen and (min-width: 499px) {
+    #header h1 {
+        padding: 0 3em;
+    }
+
+    #menu #search input {
+        width: 10em;
+    }
+}
+
+@media only screen and (min-width: 779px) {
+    #menu nav {
+        margin: 0.5em 0.25em;
+        display: inline-block;
+    }
+
+    #menu p {
+        margin: 0.39em 0.25em;
+        display: inline-block;
+    }
+
+    #menu form {
+        float: right;
+        margin-right: 0.5em;
+    }
+}
+
+@media only screen and (max-width: 779px) {
+    #menu {
+        text-align: center;
+    }
+
+    #menu nav,
+    #menu p {
+        margin: 0.25em;
+    }
+}

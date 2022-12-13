@@ -1,0 +1,33 @@
+{% extends BASE_TEMPLATE %}
+{% load static %}
+{% load app_filters %}
+{% block titleextra %}{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Home</h2>
+        <p>This website details the applications installed on <a href="https://www.baskerville.ac.uk/">Baskerville</a>. Information about Baskerville is available on the <a href="https://docs.baskerville.ac.uk/">Baskerville Docs</a> website.</p>
+        <p>There are {{ application_count }} applications installed for use on Baskerville.</p>
+        <h3>Recent Applications <a href="{% url 'bear_applications:latest-applications-feed' %}"><img src="{% static 'core/baskerville/feed-icon.svg' %}" title="Latest installed applications RSS Feed" alt="Latest installed applications RSS Feed" id="rss-feed-icon" /></a></h3>
+        <div id="applications">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Application</th>
+                        <th>Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in recent %}
+                        <tr class="highlight-tr-hover" id='{{ application.application.name }}-{{ application.version }}'>
+                            <td><a href="{% url 'bear_applications:application' name=application.application.name %}">{{ application.application.name|dot_wbr }}</a></td>
+                            <td><a href="{% url 'bear_applications:application_version' bavname=application.link_set.all.0.bearappsversion.displayed_name name=application.application.name version=application.version %}">{{ application.version }}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends BASE_TEMPLATE %}
+{% load static %}
+{% load app_filters %}
+{% block titleextra %}{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Home</h2>
+        <div class="notice">Why not try our new <a href="https://intranet.birmingham.ac.uk/bluebear-gui">BlueBEAR GUI app</a> on the <a href="https://portal.bear.bham.ac.uk">BlueBEAR Portal</a>?</div>
+        <p>This website details the applications installed on <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/bluebear/index.aspx">BlueBEAR</a> and <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/bear-cloud/index.aspx">BEARCloud and CaStLeS VMs</a>. These services are part of the <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/index.aspx">Birmingham Environment for Academic Research (BEAR)</a>, provided to researchers at the <a href="https://www.birmingham.ac.uk/">University of Birmingham</a> by <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/index.aspx">Advanced Research Computing</a>.</p>
+        <p>To request the installation of a new application, or an update to an existing one, go to the <a href="https://universityofbirmingham.service-now.com/itportal/">IT Service Portal</a> and open a <a href="https://intranet.birmingham.ac.uk/bear/sd/new-bear-software"><em>Request New Software on BEAR Systems</em></a> ticket.</p>
+        <p>There are {{ application_count }} applications installed for use on BlueBEAR, BEARCloud VMs, and CaStLeS VMs.</p>
+        <h3>Recent Applications <a href="{% url 'bear_applications:latest-applications-feed' %}"><img src="{% static 'core/bear/images/feed-icon.svg' %}" title="Latest installed applications RSS Feed" alt="Latest installed applications RSS Feed" id="rss-feed-icon" /></a></h3>
+        <div id="applications">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Application</th>
+                        <th>Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in recent %}
+                        <tr class="highlight-tr-hover" id='{{ application.application.name }}-{{ application.version }}'>
+                            <td><a href="{% url 'bear_applications:application' name=application.application.name %}">{{ application.application.name|dot_wbr }}</a></td>
+                            <td><a href="{% url 'bear_applications:application_version' bavname=application.link_set.all.0.bearappsversion.displayed_name name=application.application.name version=application.version %}">{{ application.version }}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

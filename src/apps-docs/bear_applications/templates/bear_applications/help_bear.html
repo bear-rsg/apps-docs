@@ -1,0 +1,28 @@
+{% extends BASE_TEMPLATE %}
+{% block titleextra %}: Help Information{% endblock %}
+{% block descriptionextra %}{% endblock %}
+{% block keywordsextra %}, help{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Help</h2>
+        <p>This website details the applications installed on <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/bluebear/index.aspx">BlueBEAR</a> and <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/bear-cloud/index.aspx">BEARCloud and CaStLeS VMs</a>. These services are part of the <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/index.aspx">Birmingham Environment for Academic Research (BEAR)</a>, provided to researchers at the <a href="https://www.birmingham.ac.uk/">University of Birmingham</a> by <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/index.aspx">Advanced Research Computing</a>.</p>
+        <p>To request the installation of a new application, or an update to an existing one, go to the <a href="https://universityofbirmingham.service-now.com/itportal/">IT Service Portal</a> and open a <a href="https://intranet.birmingham.ac.uk/bear/sd/new-bear-software"><em>Request New Software on BEAR Systems</em></a> ticket.</p>
+        <p>If you are looking for information on running jobs on BlueBEAR the please look at our <a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/research/bear/bluebear/bluebear-job-submission.aspx">BlueBEAR Job Submission page</a>.</p>
+        <h3 id="policy">Applications Support and Retention Policy</h3>
+        <p>There is <a href="https://intranet.birmingham.ac.uk/bear-apps-versions">further information on BEAR Applications Versions and changes in 2020 and 2021 here</a>.</p>
+        <ul>
+            <li>Applications installed on the BEAR systems are organised by the year of installation.</li>
+            <li>All mention of years in this policy refer to installation date.</li>
+            <li>Applications from the current year and the previous two years will usually be supported.</li>
+            <li>Supported applications may be removed at short notice if they can no longer run on the BEAR systems.</li>
+            <li>Applications installed more than than two years ago will usually be deprecated.</li>
+            <li>All deprecated applications will warn the user that they are deprecated, each time they are loaded.</li>
+            <li>Any deprecated application may be removed without warning.</li>
+            <li>After an application has been deprecated it may become unsupported, instead of being removed.</li>
+        </ul>
+        <h3 id="installation">Installing and Testing Applications on BEAR</h3>
+        <p>We use <a href="https://easybuilders.github.io/easybuild/">EasyBuild</a> to manage the installation of nearly all of software on the heterogeneous environment that makes up BlueBEAR and BEARCloud and CaStLeS VMs. This enables us to produce repeatable installations of the many applications requested by researchers at the University. In 2019 we led the work to allow for seemless install of software on different processor architectures using EasyBuild.</p>
+        <p>In addition, we use <a href="https://reframe-hpc.readthedocs.io/">ReFrame</a> framework to test the installed applications. This enables us to run several thousand test jobs every day to verify both the systems and the applications.</p>
+    </div>
+{% endblock %}

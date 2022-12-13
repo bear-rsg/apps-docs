@@ -1,0 +1,159 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Libre Baskerville', serif;
+}
+
+#header {
+    background-color: #333;
+}
+
+#header img {
+    height: 4.5em;
+    margin-left: 0.5em;
+}
+
+#menu {
+    border-bottom: 2px solid #333;
+}
+
+#footer {
+    background-color: #333;
+}
+
+#menu a {
+    color: #333;
+}
+
+#content a:hover,
+#content a:focus,
+#content a:active,
+#menu a:hover,
+#menu a:focus,
+#menu a:active {
+    color: white;
+    background-color: #333;
+}
+
+#footer a:hover,
+#footer a:focus,
+#footer a:active {
+    color: #362e59;
+    background-color: white;
+}
+
+table {
+    border: 1px solid #333;
+}
+
+td {
+    border: 1px solid #333;
+}
+
+thead tr th:not(:first-child) {
+    border-left: 1px solid #e5d9f2;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+thead > tr {
+    background-color: #333;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #e1e3e6;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+tr.highlight-tr-hover td:hover,
+tr.highlight-tr-hover td:focus,
+tr.highlight-tr-hover td:active {
+    background-color: #333;
+    color: white;
+}
+
+.legacy_version {
+    color: white;
+    background-color: #333;
+    border: 1px solid #362e59;
+}
+
+#content .legacy_version a:hover,
+#content .legacy_version a:focus,
+#content .legacy_version a:active {
+    color: #362e59;
+    background-color: white;
+}
+
+code {
+    background-color: #e1e3e6;
+    border: 1px solid #333;
+}
+
+#uob-logo img,
+#bear-logo img {
+    height: 3.2em;
+    max-width: 90%;
+}
+
+#search input,
+#search button,
+#advancedsearch input,
+#advancedsearch button {
+    font-family: 'Raleway', sans-serif;
+    border: 1px solid #333;
+    color: #333;
+}
+
+#search input:hover,
+#search input:focus,
+#search input:active,
+#advancedsearch input:hover,
+#advancedsearch input:focus,
+#advancedsearch input:active {
+    background-color: #e1e3e6;
+    transition: 0.5s;
+}
+
+#search button:hover,
+#search button:focus,
+#search button:active,
+#advancedsearch button:hover,
+#advancedsearch button:focus,
+#advancedsearch button:active {
+    background: #333;
+}
+
+label {
+    color: #333;
+}
+
+hr {
+    color: #333;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 779px) {
+    #header img {
+        float: left;
+    }
+}
+
+@media only screen and (min-width: 779px) {
+    #header img {
+        float: left;
+    }
+}
