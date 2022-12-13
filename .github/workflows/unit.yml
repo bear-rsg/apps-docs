@@ -12,16 +12,16 @@ jobs:
     steps:
       - name: Check out source repository
         uses: actions/checkout@v3
-	
+
       - name: Set up Python ${{ matrix.python-version }} environment
         uses: actions/setup-python@v4
-	with:
-	  python-version: ${{ matrix.python-version }}
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Python Requirements
         run: |
           pip install --upgrade pip
-	  pip install -e ".[testing]"
+          pip install -e ".[testing]"
 
       - name: Django Tests
         run: |
