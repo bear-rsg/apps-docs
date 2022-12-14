@@ -1,0 +1,30 @@
+name: Django tests
+
+on: [pull_request]
+
+jobs:
+  django-tests:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        python-version: ["3.6", "3.9", "3.10", "3.11"]
+
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }} environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Python Requirements
+        run: |
+          pip install --upgrade pip
+          pip install -e ".[testing]"
+
+      - name: Django Tests
+        run: |
+          cd src/apps-docs
+          mv core/local_settings.test.py core/local_settings.py
+          python manage.py test
