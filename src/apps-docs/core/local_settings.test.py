@@ -9,8 +9,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Create a SECRET_KEY.
-# Online tools can help generate this for you, e.g. https://www.miniwebtool.com/django-secret-key-generator/
+# This SECRET_KEY is only for running the unit tests - DO NOT USE IN PRODUCTION
 SECRET_KEY = '9e&^04)hg^ycvlawc_qwg4!!k5%xo6n=weg(=!cq!*5$sjls&$'
 
 # Set to True if in development, or False is in production
