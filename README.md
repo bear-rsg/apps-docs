@@ -23,6 +23,7 @@ Used on:
 1. `cp core/local_settings.example.py core/local_settings.py`
    * Edit this file as required
 1. `python manage.py migrate`
+1. Set up production hosting, for example using nginx and uwsgi (see <https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/uwsgi/>)
 
 
 ## Scripts and Adding and Editing Data
